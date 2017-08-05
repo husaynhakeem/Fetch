@@ -6,8 +6,7 @@ package io.husayn.fetchlibrary;
 
 public enum ResourceType {
     IMAGE,
-    XML,
-    JSON,
+    TEXT,
     PDF,
     NONE
 }
