@@ -1,8 +1,6 @@
 package io.husayn.fetchlibrary;
 
-import java.util.List;
-
-import io.reactivex.Single;
+import io.reactivex.Observable;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
@@ -34,6 +32,6 @@ public class FetchJsonApi<T> {
     interface FetchJsonApiInterface<T> {
 
         @GET("")
-        Single<List<T>> getJsonObjects();
+        Observable<T> getJsonObjects();
     }
 }

@@ -5,7 +5,7 @@ import android.content.Context;
 import java.util.Collections;
 import java.util.List;
 
-import io.reactivex.Single;
+import io.reactivex.Observable;
 
 import static io.husayn.fetchlibrary.Fetch.ResourceType.NONE;
 
@@ -18,7 +18,7 @@ public class Fetch<T> {
     private static final int DEFAULT_ITEMS_COUNT = 10;
     private static final int DEFAULT_CACHE = 10;
 
-    enum ResourceType {
+    public enum ResourceType {
         IMAGE,
         XML,
         JSON,
@@ -33,42 +33,42 @@ public class Fetch<T> {
     private int cache = DEFAULT_CACHE;
 
 
-    private Fetch(Context context) {
+    public Fetch(Context context) {
         this.context = context;
     }
 
 
-    public static Fetch with(Context context) {
-        return new Fetch(context);
-    }
-
-
-    public void from(String url) {
+    public Fetch<T> from(String url) {
         this.urls = Collections.singletonList(url);
+        return this;
     }
 
 
-    public void from(List<String> urls) {
+    public Fetch<T> from(List<String> urls) {
         this.urls = urls;
+        return this;
     }
 
 
-    public void ofType(ResourceType resourceType) {
+    public Fetch<T> ofType(ResourceType resourceType) {
         this.resourceType = resourceType;
+        return this;
     }
 
 
-    public void take(int itemsCount) {
+    public Fetch<T> take(int itemsCount) {
         this.itemsCount = itemsCount;
+        return this;
     }
 
 
-    public void cache(int cache) {
+    public Fetch<T> cache(int cache) {
         this.cache = cache;
+        return this;
     }
 
 
-    public Single<T> load() {
+    public Observable<T> load() {
         assertMandatoryAttributesNotNull();
         return new RequestHandler<T>().load(context, urls, resourceType, itemsCount, cache);
     }
