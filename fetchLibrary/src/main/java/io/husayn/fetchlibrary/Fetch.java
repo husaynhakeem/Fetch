@@ -2,32 +2,52 @@ package io.husayn.fetchlibrary;
 
 import android.content.Context;
 
-import java.util.Collections;
 import java.util.List;
 
-import io.reactivex.Single;
+import io.husayn.fetchlibrary.helper.CheckAgent;
+import io.husayn.fetchlibrary.image.ImageFetch;
+import io.husayn.fetchlibrary.text.TextFetch;
 
-import static io.husayn.fetchlibrary.ResourceType.NONE;
 
 /**
  * Created by husaynhakeem on 8/4/17.
  */
 
-public class Fetch {
+abstract public class Fetch {
 
-    private static final int DEFAULT_ITEMS_COUNT = 10;
-    private static final int DEFAULT_CACHE = 10;
-
-
-    private Context context;
-    private List<String> urls;
-    private ResourceType resourceType = NONE;
-    private int itemsCount = DEFAULT_ITEMS_COUNT;
-    private int cache = DEFAULT_CACHE;
+    protected static final int DEFAULT_ITEMS_COUNT = 10;
+    protected static final int DEFAULT_CACHE = 10;
 
 
-    public Fetch(Context context) {
-        this.context = context;
+    protected Context context;
+    protected List<String> urls;
+    protected int itemsCount = DEFAULT_ITEMS_COUNT;
+    protected int cache = DEFAULT_CACHE;
+    protected ResourceType resourceType = ResourceType.NONE;
+
+
+    protected CheckAgent checkAgent;
+
+
+    /**
+     * To be used when one needs to fetch for data of types such
+     * as JSON, XML, etc
+     *
+     * @return Text Fetcher
+     */
+    public static TextFetch forText(Context context) {
+        return new TextFetch(context);
+    }
+
+
+    /**
+     * To be used when one needs to fetch for images.
+     * The returned data will be of type BITMAP
+     *
+     * @return Image Fetcher
+     */
+    public static ImageFetch forImage(Context context) {
+        return new ImageFetch(context);
     }
 
 
@@ -41,11 +61,6 @@ public class Fetch {
     }
 
 
-    public ResourceType getResourceType() {
-        return resourceType;
-    }
-
-
     public int getItemsCount() {
         return itemsCount;
     }
@@ -56,38 +71,7 @@ public class Fetch {
     }
 
 
-    public Fetch from(String url) {
-        this.urls = Collections.singletonList(url);
-        return this;
-    }
-
-
-    public Fetch from(List<String> urls) {
-        this.urls = urls;
-        return this;
-    }
-
-
-    public Fetch ofType(ResourceType resourceType) {
-        this.resourceType = resourceType;
-        return this;
-    }
-
-
-    public Fetch take(int itemsCount) {
-        this.itemsCount = itemsCount;
-        return this;
-    }
-
-
-    public Fetch cache(int cache) {
-        this.cache = cache;
-        return this;
-    }
-
-
-    public Single<? extends Object> load() {
-        new CheckAgent(this).checkAttributes();
-        return new RequestHandler<String>().load(context, urls, resourceType, itemsCount, cache);
+    public Object getResourceType() {
+        return resourceType;
     }
 }

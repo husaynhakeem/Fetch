@@ -1,4 +1,4 @@
-package io.husayn.fetchlibrary;
+package io.husayn.fetchlibrary.text;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,15 +14,15 @@ import io.reactivex.Single;
  * Created by husaynhakeem on 8/5/17.
  */
 
-public class FetchJsonApi {
+public class TextFetchApi {
 
 
-    private FetchJsonApi() {
+    private TextFetchApi() {
     }
 
 
-    public static FetchJsonApi instance() {
-        return new FetchJsonApi();
+    public static TextFetchApi instance() {
+        return new TextFetchApi();
     }
 
 

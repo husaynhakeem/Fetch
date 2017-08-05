@@ -1,6 +1,9 @@
-package io.husayn.fetchlibrary;
+package io.husayn.fetchlibrary.helper;
 
 import java.net.URL;
+
+import io.husayn.fetchlibrary.Fetch;
+import io.husayn.fetchlibrary.ResourceType;
 
 /**
  * Created by husaynhakeem on 8/5/17.
