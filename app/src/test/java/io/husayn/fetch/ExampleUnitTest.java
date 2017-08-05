@@ -1,4 +1,4 @@
-package io.husayn.fetchlibrary;
+package io.husayn.fetch;
 
 import org.junit.Test;
 
