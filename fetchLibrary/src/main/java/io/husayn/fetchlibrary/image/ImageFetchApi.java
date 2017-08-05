@@ -40,12 +40,27 @@ public class ImageFetchApi {
 
 
     public Single<Bitmap> load(final String url) {
-        return Single.fromCallable(new Callable<Bitmap>() {
+        return load(url, new Callable<Bitmap>() {
             @Override
             public Bitmap call() throws Exception {
                 return Picasso.with(context).load(url).get();
             }
-        })
+        });
+    }
+
+
+    public Single<Bitmap> load(final String url, final int width, final int height) {
+        return load(url, new Callable<Bitmap>() {
+            @Override
+            public Bitmap call() throws Exception {
+                return Picasso.with(context).load(url).resize(width, height).get();
+            }
+        });
+    }
+
+
+    public Single<Bitmap> load(final String url, Callable<Bitmap> callable) {
+        return Single.fromCallable(callable)
                 .subscribeOn(Schedulers.newThread())
                 .doOnSuccess(new Consumer<Bitmap>() {
                     @Override
@@ -72,14 +87,40 @@ public class ImageFetchApi {
 
                 for (String url : urls) {
                     try {
-                        images.add(Picasso.with(context).load(url).get());
+                        images.add(Picasso.with(context)
+                                .load(url)
+                                .get());
                     } catch (Exception e) {
                         Log.e(TAG, "Error while loading images: " + e.getMessage());
                         e.printStackTrace();
                         return Observable.error(e);
                     }
                 }
+                return Observable.just(images);
+            }
+        });
+    }
 
+
+    public Observable<List<Bitmap>> load(final List<String> urls, final int width, final int height) {
+        return Observable.defer(new Callable<ObservableSource<? extends List<Bitmap>>>() {
+            @Override
+            public Observable<List<Bitmap>> call() {
+
+                List<Bitmap> images = new ArrayList<>(urls.size());
+
+                for (String url : urls) {
+                    try {
+                        images.add(Picasso.with(context)
+                                .load(url)
+                                .resize(width, height)
+                                .get());
+                    } catch (Exception e) {
+                        Log.e(TAG, "Error while loading images: " + e.getMessage());
+                        e.printStackTrace();
+                        return Observable.error(e);
+                    }
+                }
                 return Observable.just(images);
             }
         });

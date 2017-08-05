@@ -4,6 +4,7 @@ import java.net.URL;
 
 import io.husayn.fetchlibrary.Fetch;
 import io.husayn.fetchlibrary.ResourceType;
+import io.husayn.fetchlibrary.image.ImageFetch;
 
 /**
  * Created by husaynhakeem on 8/5/17.
@@ -13,7 +14,7 @@ public class CheckAgent {
 
 
     private Fetch fetch;
-
+    private boolean isFetchable = false;
 
     public CheckAgent(Fetch fetch) {
         this.fetch = fetch;
@@ -27,6 +28,13 @@ public class CheckAgent {
         checkResourceType();
         checkItemsCount();
         checkCache();
+
+        if (fetch instanceof ImageFetch) {
+            checkWidth();
+            checkHeight();
+        }
+
+        isFetchable = true;
     }
 
 
@@ -74,5 +82,28 @@ public class CheckAgent {
             throw new RuntimeException("Fetch cache attribute cannot be set to 0 (Zero)");
         if (fetch.getCache() < 0)
             throw new RuntimeException("Fetch cache attribute cannot be negative");
+    }
+
+
+    private void checkWidth() {
+        ImageFetch imageFetch = (ImageFetch) fetch;
+        if (imageFetch.getWidth() == 0)
+            throw new RuntimeException("Image Fetch width attribute cannot be set to 0 (Zero)");
+        if (imageFetch.getWidth() != ImageFetch.DEFAULT_DIMENSION && imageFetch.getWidth() < 0)
+            throw new RuntimeException("Image Fetch width attribute cannot be negative");
+    }
+
+
+    private void checkHeight() {
+        ImageFetch imageFetch = (ImageFetch) fetch;
+        if (imageFetch.getHeight() == 0)
+            throw new RuntimeException("Image Fetch height attribute cannot be set to 0 (Zero)");
+        if (imageFetch.getHeight() != ImageFetch.DEFAULT_DIMENSION && imageFetch.getHeight() < 0)
+            throw new RuntimeException("Image Fetch height attribute cannot be negative");
+    }
+
+
+    public boolean isFetchable() {
+        return isFetchable;
     }
 }

@@ -27,6 +27,7 @@ public class PhotosActivity extends AppCompatActivity {
 
         Fetch.forImage(this)
                 .from(urls)
+                .withDimens(50, -1)
                 .loadAll()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -15,8 +15,8 @@ import io.husayn.fetchlibrary.text.TextFetch;
 
 abstract public class Fetch {
 
-    protected static final int DEFAULT_ITEMS_COUNT = 10;
-    protected static final int DEFAULT_CACHE = 10;
+    public static final int DEFAULT_ITEMS_COUNT = 10;
+    public static final int DEFAULT_CACHE = 10;
 
 
     protected Context context;
