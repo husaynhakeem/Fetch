@@ -1,4 +1,4 @@
-package io.husayn.fetchlibrary;
+package io.husayn.fetch;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
