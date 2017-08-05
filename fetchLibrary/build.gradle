@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "26.0.0"
+    buildToolsVersion '26.0.0'
 
     defaultConfig {
         minSdkVersion 16
@@ -17,10 +17,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
-    }
 }
 
 dependencies {
@@ -34,6 +30,7 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.jakewharton.timber:timber:4.5.1'
     testCompile 'junit:junit:4.12'
 }
