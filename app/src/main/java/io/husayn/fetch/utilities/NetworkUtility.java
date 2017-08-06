@@ -14,6 +14,6 @@ public class NetworkUtility {
 
     public static boolean isInternetAvailable() {
         ConnectivityManager manager = (ConnectivityManager) FetchSampleApp.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        return manager.getActiveNetworkInfo().isConnected();
+        return manager.getActiveNetworkInfo() != null && manager.getActiveNetworkInfo().isConnected();
     }
 }

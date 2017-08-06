@@ -34,10 +34,7 @@ public class ListingPresenter implements ListingContract.Presenter {
     public void start() {
         setUpContext();
         setUpDataAgent();
-        if (isInternetAvailable())
-            loadItems();
-        else
-            onNoInternet();
+        loadItems();
     }
 
 
@@ -59,8 +56,11 @@ public class ListingPresenter implements ListingContract.Presenter {
 
     @Override
     public void loadItems() {
-        view.showLoadingIndicator();
-        dataAgent.loadItems(this, currentOffset);
+        if (isInternetAvailable()) {
+            view.showLoadingIndicator();
+            dataAgent.loadItems(this, currentOffset);
+        } else
+            onNoInternet();
     }
 
 

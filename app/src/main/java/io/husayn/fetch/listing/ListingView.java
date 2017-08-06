@@ -1,5 +1,7 @@
 package io.husayn.fetch.listing;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -32,7 +34,7 @@ public class ListingView extends Fragment implements ListingContract.View {
     @BindView(R.id.pb_loading)
     ProgressBar loadingProgressBar;
 
-    private View rootView;
+    private Activity activity;
     private ListingAdapter listingAdapter;
     private Snackbar snackbar;
     private ListingContract.Presenter presenter;
@@ -41,11 +43,18 @@ public class ListingView extends Fragment implements ListingContract.View {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_listing, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_listing, container, false);
         ButterKnife.bind(this, rootView);
         presenter.start();
         setUpViews();
         return rootView;
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        activity = (ListingActivity) context;
     }
 
 
@@ -64,7 +73,7 @@ public class ListingView extends Fragment implements ListingContract.View {
         listingRecyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(listingLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-
+                presenter.loadItems();
             }
         });
     }
@@ -93,7 +102,7 @@ public class ListingView extends Fragment implements ListingContract.View {
     public void onErrorAndNoInternet(String message) {
         if (snackbar != null && snackbar.isShown())
             snackbar.dismiss();
-        snackbar = Snackbar.make(rootView, message, Snackbar.LENGTH_INDEFINITE);
+        snackbar = Snackbar.make(activity.findViewById(android.R.id.content), message, Snackbar.LENGTH_INDEFINITE);
         snackbar.setAction(R.string.retry, view -> presenter.loadItems());
         snackbar.show();
     }
