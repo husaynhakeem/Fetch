@@ -3,4 +3,6 @@
     android:id="@+id/iv_listing_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:contentDescription="@string/listing_item_content_description" />
+    android:adjustViewBounds="true"
+    android:contentDescription="@string/listing_item_content_description"
+    android:scaleType="centerCrop" />
