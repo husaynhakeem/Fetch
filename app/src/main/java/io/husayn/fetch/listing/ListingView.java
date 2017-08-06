@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,12 +28,15 @@ import io.husayn.fetch.model.Item;
 public class ListingView extends Fragment implements ListingContract.View {
 
 
-    private static final int SPAN_COUNT = 2;
+    private static final int FAB_ANIMATION_SENSITIVITY = 0;
     @BindView(R.id.rv_listing)
     RecyclerView listingRecyclerView;
 
     @BindView(R.id.pb_loading)
     ProgressBar loadingProgressBar;
+
+    @BindView(R.id.fab_up)
+    FloatingActionButton upFab;
 
     private Activity activity;
     private ListingAdapter listingAdapter;
@@ -75,7 +79,25 @@ public class ListingView extends Fragment implements ListingContract.View {
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 presenter.loadItems();
             }
+
+            @Override
+            public void onScrolled(RecyclerView view, int dx, int dy) {
+                super.onScrolled(view, dx, dy);
+                if (dy > FAB_ANIMATION_SENSITIVITY)
+                    upFab.hide();
+                else
+                    upFab.show();
+            }
         });
+
+        upFab.setOnClickListener(view -> goUpListing());
+    }
+
+
+    @Override
+    public void goUpListing() {
+        if (listingRecyclerView != null)
+            listingRecyclerView.smoothScrollToPosition(0);
     }
 
 

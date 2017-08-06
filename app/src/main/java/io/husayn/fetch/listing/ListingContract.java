@@ -23,6 +23,8 @@ public interface ListingContract {
         void setItems(List<Item> items);
 
         void onErrorAndNoInternet(String message);
+
+        void goUpListing();
     }
 
 
