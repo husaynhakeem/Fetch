@@ -55,8 +55,6 @@ public class TextFetch extends Fetch {
 
     public Single<String> load() {
         checkAgent.checkAttributes();
-        return TextFetchApi.instance()
-                .load(urls.get(0))
-                .cache();
+        return TextFetchApi.instance().load(urls.get(0));
     }
 }

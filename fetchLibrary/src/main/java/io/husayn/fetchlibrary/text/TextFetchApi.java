@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.concurrent.Callable;
 
 import io.reactivex.Single;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by husaynhakeem on 8/5/17.
@@ -32,7 +33,9 @@ public class TextFetchApi {
             public String call() throws Exception {
                 return getJson(url);
             }
-        });
+        })
+                .subscribeOn(Schedulers.io())
+                .cache();
     }
 
 

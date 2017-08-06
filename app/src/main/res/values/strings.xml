@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FetchLibrary</string>
+    <string name="on_no_internet">Connect to the internet then retry.</string>
+    <string name="on_error">An error occured. Please retry</string>
+    <string name="retry">Retry</string>
+    <string name="listing_item_content_description">Photo</string>
 </resources>
