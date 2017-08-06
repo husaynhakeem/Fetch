@@ -1,7 +1,20 @@
 <resources>
     <string name="app_name">FetchLibrary</string>
     <string name="on_no_internet">Connect to the internet then retry.</string>
-    <string name="on_error">An error occured. Please retry</string>
+    <string name="on_error">An error occurred. Please retry</string>
     <string name="retry">Retry</string>
     <string name="listing_item_content_description">Photo</string>
+
+    <!--Detail-->
+    <string name="image_by">By</string>
+    <string name="image_by_on">on</string>
+    <string name="image_by_onsplash">onsplash</string>
+    <string name="likes_content_description">Number of likes</string>
+    <string name="created_key">Created:</string>
+    <string name="width_key">Width:</string>
+    <string name="height_key">Height:</string>
+    <string name="categories_key">Categories:</string>
+    <string name="details_title">Details</string>
+    <string name="posted_by">Posted by</string>
+    <string name="profile_image_content_description">User profile image</string>
 </resources>

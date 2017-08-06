@@ -70,7 +70,7 @@ public class ListingView extends Fragment implements ListingContract.View {
 
     @Override
     public void setUpViews() {
-        listingAdapter = new ListingAdapter(null, getContext());
+        listingAdapter = new ListingAdapter(presenter, null, getContext());
         listingRecyclerView.setAdapter(listingAdapter);
         LinearLayoutManager listingLayoutManager = new LinearLayoutManager(getContext());
         listingRecyclerView.setLayoutManager(listingLayoutManager);

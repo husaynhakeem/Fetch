@@ -24,11 +24,13 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingItemVH> {
 
 
     private static final String TAG = ListingAdapter.class.getSimpleName();
+    private ListingContract.Presenter presenter;
     private List<Item> items;
     private Context context;
 
 
-    public ListingAdapter(List<Item> items, Context context) {
+    public ListingAdapter(ListingContract.Presenter presenter, List<Item> items, Context context) {
+        this.presenter = presenter;
         this.items = items;
         this.context = context;
     }
@@ -43,13 +45,15 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingItemVH> {
 
     @Override
     public void onBindViewHolder(ListingItemVH holder, int position) {
+        Item item = items.get(position);
         Fetch.forImage(context)
-                .from(items.get(position).urls.regular)
+                .from(item.urls.regular)
                 .load()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(holder.listingItemImageView::setImageBitmap,
                         t -> onBindViewHolderError(t, position));
+        holder.itemView.setOnClickListener(view -> presenter.onItemClicked(item, context));
     }
 
 

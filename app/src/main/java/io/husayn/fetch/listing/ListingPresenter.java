@@ -1,12 +1,16 @@
 package io.husayn.fetch.listing;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
 import io.husayn.fetch.FetchSampleApp;
 import io.husayn.fetch.R;
+import io.husayn.fetch.detail.DetailActivity;
 import io.husayn.fetch.model.Item;
 import io.husayn.fetch.utilities.NetworkUtility;
 
@@ -88,7 +92,9 @@ public class ListingPresenter implements ListingContract.Presenter {
 
 
     @Override
-    public void onItemClicked(Item item) {
-
+    public void onItemClicked(Item item, Context context) {
+        Intent intent = new Intent(context, DetailActivity.class);
+        intent.putExtra("item", Parcels.wrap(item));
+        context.startActivity(intent);
     }
 }

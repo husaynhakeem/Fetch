@@ -1,5 +1,7 @@
 package io.husayn.fetch.listing;
 
+import android.content.Context;
+
 import java.util.List;
 
 import io.husayn.fetch.BasePresenter;
@@ -40,6 +42,6 @@ public interface ListingContract {
 
         void onError(Throwable t);
 
-        void onItemClicked(Item item);
+        void onItemClicked(Item item, Context context);
     }
 }
