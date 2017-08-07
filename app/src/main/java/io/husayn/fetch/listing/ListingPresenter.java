@@ -97,4 +97,11 @@ public class ListingPresenter implements ListingContract.Presenter {
         intent.putExtra("item", Parcels.wrap(item));
         context.startActivity(intent);
     }
+
+
+    @Override
+    public void onLayoutRefresh() {
+        currentOffset = 0;
+        loadItems();
+    }
 }

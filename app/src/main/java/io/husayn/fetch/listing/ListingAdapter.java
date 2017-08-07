@@ -73,4 +73,9 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingItemVH> {
     public int getItemCount() {
         return (items == null) ? 0 : items.size();
     }
+
+
+    public void clear() {
+        items.clear();
+    }
 }

@@ -27,6 +27,8 @@ public interface ListingContract {
         void onErrorAndNoInternet(String message);
 
         void goUpListing();
+
+        void onLayoutRefresh();
     }
 
 
@@ -43,5 +45,7 @@ public interface ListingContract {
         void onError(Throwable t);
 
         void onItemClicked(Item item, Context context);
+
+        void onLayoutRefresh();
     }
 }
