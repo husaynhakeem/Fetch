@@ -64,6 +64,7 @@ public class DetailView extends Fragment implements DetailContract.View {
         View rootView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_detail, container, false);
         ButterKnife.bind(this, rootView);
         presenter.start();
+        setupListeners();
         return rootView;
     }
 
@@ -125,5 +126,13 @@ public class DetailView extends Fragment implements DetailContract.View {
     @Override
     public void setUserFullName(String fullName) {
         userFullNameTextView.setText(fullName);
+    }
+
+
+    @Override
+    public void setupListeners() {
+        onsplaseTextView.setOnClickListener(v -> presenter.onUnsplashClicked(getContext()));
+        usernameTextView.setOnClickListener(v -> presenter.onProfileClicked(getContext()));
+        profileFab.setOnClickListener(v -> presenter.onProfileClicked(getContext()));
     }
 }

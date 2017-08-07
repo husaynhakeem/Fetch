@@ -1,5 +1,6 @@
 package io.husayn.fetch.detail;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 
 import io.husayn.fetch.BasePresenter;
@@ -32,6 +33,8 @@ public interface DetailContract {
         void setProfileImage(Bitmap bitmap);
 
         void setUserFullName(String fullName);
+
+        void setupListeners();
     }
 
     interface Presenter extends BasePresenter<View> {
@@ -63,5 +66,9 @@ public interface DetailContract {
         void onImageLoadingError(Throwable t);
 
         void onProfileImageLoadingError(Throwable t);
+
+        void onUnsplashClicked(Context context);
+
+        void onProfileClicked(Context context);
     }
 }

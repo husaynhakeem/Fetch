@@ -8,7 +8,7 @@
     <!--Detail-->
     <string name="image_by">By</string>
     <string name="image_by_on">on</string>
-    <string name="image_by_onsplash">onsplash</string>
+    <string name="image_by_onsplash">unsplash</string>
     <string name="likes_content_description">Number of likes</string>
     <string name="created_key">Created:</string>
     <string name="width_key">Width:</string>
@@ -19,4 +19,5 @@
     <string name="profile_image_content_description">User profile image</string>
     <string name="width_value">%d px</string>
     <string name="height_value">%d px</string>
+    <string name="onsplash_site_url">https://unsplash.com</string>
 </resources>

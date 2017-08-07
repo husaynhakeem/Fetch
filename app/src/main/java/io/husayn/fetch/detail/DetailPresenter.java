@@ -1,8 +1,10 @@
 package io.husayn.fetch.detail;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.util.Log;
 
 import io.husayn.fetch.FetchSampleApp;
@@ -143,5 +145,23 @@ public class DetailPresenter implements DetailContract.Presenter {
     public void onProfileImageLoadingError(Throwable t) {
         view.setProfileImage(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_no_profile_image));
         Log.e(TAG, "Error while loading profile image " + item.user.profile_image.small + ", Error: " + t.getMessage());
+    }
+
+
+    @Override
+    public void onUnsplashClicked(Context context) {
+        Uri uri = Uri.parse(context.getString(R.string.onsplash_site_url));
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        if (intent.resolveActivity(context.getPackageManager()) != null)
+            context.startActivity(intent);
+    }
+
+
+    @Override
+    public void onProfileClicked(Context context) {
+        Uri uri = Uri.parse(item.user.links.html);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        if (intent.resolveActivity(context.getPackageManager()) != null)
+            context.startActivity(intent);
     }
 }
