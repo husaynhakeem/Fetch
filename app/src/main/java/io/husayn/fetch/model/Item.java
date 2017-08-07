@@ -34,7 +34,7 @@ public class Item {
     public User user;
     public Urls urls;
     public Links links;
-    public List<Categories> categories;
+    public List<Category> categories;
 
 
     @Parcel
@@ -65,30 +65,6 @@ public class Item {
             public String small;
             public String medium;
             public String large;
-
-            public String getSmall() {
-                return small;
-            }
-
-            public void setSmall(String small) {
-                this.small = small;
-            }
-
-            public String getMedium() {
-                return medium;
-            }
-
-            public void setMedium(String medium) {
-                this.medium = medium;
-            }
-
-            public String getLarge() {
-                return large;
-            }
-
-            public void setLarge(String large) {
-                this.large = large;
-            }
         }
 
         @Parcel
@@ -141,7 +117,7 @@ public class Item {
 
 
     @Parcel
-    public static class Categories {
+    public static class Category {
         /**
          * id : 4
          * title : Nature

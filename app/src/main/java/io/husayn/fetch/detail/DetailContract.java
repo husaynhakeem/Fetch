@@ -19,7 +19,7 @@ public interface DetailContract {
 
         void setUsername(String username);
 
-        void setLikes(int likes);
+        void setLikes(String likes);
 
         void setCreationDate(String creationDate);
 
@@ -40,6 +40,8 @@ public interface DetailContract {
 
         void setImage();
 
+        void onImageLoaded(Bitmap bitmap);
+
         void setUsername();
 
         void setLikes();
@@ -54,6 +56,12 @@ public interface DetailContract {
 
         void setProfileImage();
 
+        void onProfileImageLoaded(Bitmap bitmap);
+
         void setUserFullName();
+
+        void onImageLoadingError(Throwable t);
+
+        void onProfileImageLoadingError(Throwable t);
     }
 }

@@ -23,7 +23,7 @@ public class ListingPresenter implements ListingContract.Presenter {
 
     private static final String TAG = ListingPresenter.class.getSimpleName();
     private ListingContract.View view;
-    private ListingDataAgent dataAgent;
+    private ListingModel dataAgent;
     private Context context;
     private int currentOffset = 0;
 
@@ -48,7 +48,7 @@ public class ListingPresenter implements ListingContract.Presenter {
 
 
     private void setUpDataAgent() {
-        dataAgent = new ListingDataAgent();
+        dataAgent = new ListingModel();
     }
 
 

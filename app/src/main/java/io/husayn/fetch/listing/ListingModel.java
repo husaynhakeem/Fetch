@@ -16,7 +16,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by husaynhakeem on 8/5/17.
  */
 
-public class ListingDataAgent {
+public class ListingModel {
 
 
     private static final String BASE_URL = "http://pastebin.com/raw/wgkJgazE";
