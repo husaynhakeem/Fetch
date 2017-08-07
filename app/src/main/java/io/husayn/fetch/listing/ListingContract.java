@@ -1,6 +1,7 @@
 package io.husayn.fetch.listing;
 
 import android.content.Context;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public interface ListingContract {
 
         void onError(Throwable t);
 
-        void onItemClicked(Item item, Context context);
+        void onItemClicked(Item item, Context context, ImageView imageView);
 
         void onLayoutRefresh();
     }

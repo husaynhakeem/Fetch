@@ -53,7 +53,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingItemVH> {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(holder.listingItemImageView::setImageBitmap,
                         t -> onBindViewHolderError(t, position));
-        holder.itemView.setOnClickListener(view -> presenter.onItemClicked(item, context));
+        holder.itemView.setOnClickListener(view -> presenter.onItemClicked(item, context, holder.listingItemImageView));
     }
 
 

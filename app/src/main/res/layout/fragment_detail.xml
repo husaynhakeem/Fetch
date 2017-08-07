@@ -21,6 +21,7 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/listing_item_content_description"
                 android:scaleType="centerCrop"
+                android:transitionName="image"
                 tools:src="@drawable/sample" />
 
             <include

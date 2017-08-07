@@ -1,8 +1,12 @@
 package io.husayn.fetch.listing;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.util.Log;
+import android.widget.ImageView;
 
 import org.parceler.Parcels;
 
@@ -92,10 +96,11 @@ public class ListingPresenter implements ListingContract.Presenter {
 
 
     @Override
-    public void onItemClicked(Item item, Context context) {
+    public void onItemClicked(Item item, Context context, ImageView imageView) {
         Intent intent = new Intent(context, DetailActivity.class);
         intent.putExtra("item", Parcels.wrap(item));
-        context.startActivity(intent);
+        Bundle animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, imageView, "image").toBundle();
+        context.startActivity(intent, animationBundle);
     }
 
 

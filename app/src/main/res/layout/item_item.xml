@@ -5,4 +5,5 @@
     android:layout_height="wrap_content"
     android:adjustViewBounds="true"
     android:contentDescription="@string/listing_item_content_description"
-    android:scaleType="centerCrop" />
+    android:scaleType="centerCrop"
+    android:transitionName="image" />
