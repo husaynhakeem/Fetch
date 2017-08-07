@@ -12,6 +12,9 @@ import io.husayn.fetch.FetchSampleApp;
 public class NetworkUtility {
 
 
+    /**
+     * @return Whether or not the device is connected to the internet
+     */
     public static boolean isInternetAvailable() {
         ConnectivityManager manager = (ConnectivityManager) FetchSampleApp.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         return manager.getActiveNetworkInfo() != null && manager.getActiveNetworkInfo().isConnected();

@@ -62,6 +62,11 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingItemVH> {
     }
 
 
+    /**
+     * Add a list of items to the adapter's list of items
+     *
+     * @param items
+     */
     public void putItems(List<Item> items) {
         if (this.items == null)
             this.items = new ArrayList<>();
@@ -75,6 +80,10 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingItemVH> {
     }
 
 
+    /**
+     * Clear the list of items.
+     * Used when refreshing the list.
+     */
     public void clear() {
         items.clear();
     }

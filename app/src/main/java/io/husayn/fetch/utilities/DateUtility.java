@@ -15,6 +15,10 @@ public class DateUtility {
     private static final int TO_INDEX = FORMATTED_DATE_FORMAT.length();
 
 
+    /**
+     * @param unformattedDate
+     * @return Date in the format yyyy-MM-dd. Example: 2017-08-07
+     */
     public static String formatDate(String unformattedDate) {
 
         if (!unformattedDate.matches(UNFORMATTED_DATE_REGEX))

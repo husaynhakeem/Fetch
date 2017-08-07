@@ -27,7 +27,7 @@ public class ListingPresenter implements ListingContract.Presenter {
 
     private static final String TAG = ListingPresenter.class.getSimpleName();
     private ListingContract.View view;
-    private ListingModel dataAgent;
+    private ListingModel model;
     private Context context;
     private int currentOffset = 0;
 
@@ -41,7 +41,7 @@ public class ListingPresenter implements ListingContract.Presenter {
     @Override
     public void start() {
         setUpContext();
-        setUpDataAgent();
+        setUpModel();
         loadItems();
     }
 
@@ -51,8 +51,8 @@ public class ListingPresenter implements ListingContract.Presenter {
     }
 
 
-    private void setUpDataAgent() {
-        dataAgent = new ListingModel();
+    private void setUpModel() {
+        model = new ListingModel();
     }
 
 
@@ -66,7 +66,7 @@ public class ListingPresenter implements ListingContract.Presenter {
     public void loadItems() {
         if (isInternetAvailable()) {
             view.showLoadingIndicator();
-            dataAgent.loadItems(this, currentOffset);
+            model.loadItems(this, currentOffset);
         } else
             onNoInternet();
     }

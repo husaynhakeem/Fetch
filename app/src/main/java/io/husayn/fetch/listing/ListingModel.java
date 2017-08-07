@@ -19,10 +19,22 @@ import io.reactivex.schedulers.Schedulers;
 public class ListingModel {
 
 
+    // URL from which the data in the listing are taken.
     private static final String BASE_URL = "http://pastebin.com/raw/wgkJgazE";
+
+    // Number of items to take on each network call
     private static final int ITEMS_TO_TAKE = 10;
 
 
+    /**
+     * This method doesn't take into consideration the offset, even though in a real
+     * world application it should (it must). Even though this offset is incremented
+     * before each call of this method, the same set of data is always returned (in
+     * order to implement an infinite scrolling list).
+     *
+     * @param presenter
+     * @param offset
+     */
     public void loadItems(ListingContract.Presenter presenter, int offset) {
         Fetch.forText(FetchSampleApp.getContext())
                 .from(BASE_URL)
@@ -35,8 +47,17 @@ public class ListingModel {
     }
 
 
+    /**
+     * Converts a JSON string to a list og objects of type 'Item'.
+     * Ideally, this should be the work of the 'Fetch' library, but
+     * I wasn't able to find a way to do so.
+     *
+     * @param s JSON string
+     * @return List of items converted from the input JSON
+     */
     private List<Item> fromJsonToItemsList(String s) {
-        Type listType = new TypeToken<List<Item>>() {}.getType();
+        Type listType = new TypeToken<List<Item>>() {
+        }.getType();
         return new Gson().fromJson(s, listType);
     }
 }

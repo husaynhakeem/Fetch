@@ -8,6 +8,10 @@ import java.util.List;
  * Created by husaynhakeem on 8/5/17.
  */
 
+/**
+ * Not all the attributes in this class are used, in fact only a few are.
+ * Ideally the attributes that aren't used should be ignored (using the ignore annotation)
+ */
 @Parcel
 public class Item {
     /**

@@ -20,6 +20,12 @@ public class FetchSampleApp extends Application {
     }
 
 
+    /**
+     * Helper method to make the application context available
+     * anywhere in the application (especially in helper classes)
+     *
+     * @return
+     */
     public static Context getContext() {
         return context;
     }

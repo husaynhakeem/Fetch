@@ -15,6 +15,9 @@ public class ListingActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Set up the listing view and presenter
+     */
     private void setupListing() {
         ListingView view = new ListingView();
         ListingPresenter presenter = new ListingPresenter();

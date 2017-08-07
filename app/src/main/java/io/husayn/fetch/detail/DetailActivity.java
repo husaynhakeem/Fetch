@@ -19,6 +19,10 @@ public class DetailActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Sets up the view and presenter of the detail screen.
+     * Also retrieves the item passed on to this activity.
+     */
     private void setUpDetail() {
         DetailView view = new DetailView();
         DetailPresenter presenter = new DetailPresenter();
