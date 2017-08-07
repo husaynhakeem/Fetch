@@ -26,7 +26,6 @@ public class ImageFetchApi {
 
     private static final String TAG = ImageFetchApi.class.getName();
     private Context context;
-    private int index = 0;
 
 
     private ImageFetchApi(Context context) {
@@ -39,6 +38,12 @@ public class ImageFetchApi {
     }
 
 
+    /**
+     * Used to load 1 image.
+     *
+     * @param url
+     * @return
+     */
     public Single<Bitmap> load(final String url) {
         return load(url, new Callable<Bitmap>() {
             @Override
@@ -49,6 +54,14 @@ public class ImageFetchApi {
     }
 
 
+    /**
+     * Used to load 1 image with a certain 'Width' and 'Height'.
+     *
+     * @param url
+     * @param width
+     * @param height
+     * @return
+     */
     public Single<Bitmap> load(final String url, final int width, final int height) {
         return load(url, new Callable<Bitmap>() {
             @Override
@@ -78,6 +91,12 @@ public class ImageFetchApi {
     }
 
 
+    /**
+     * Used to load a list of images.
+     *
+     * @param urls
+     * @return
+     */
     public Observable<List<Bitmap>> load(final List<String> urls) {
         return Observable.defer(new Callable<ObservableSource<? extends List<Bitmap>>>() {
             @Override
@@ -102,6 +121,14 @@ public class ImageFetchApi {
     }
 
 
+    /**
+     * Used to load a list of images with a certain 'Width' and 'Height'.
+     *
+     * @param urls
+     * @param width  Width of all the resulting images
+     * @param height Height of all the resulting images
+     * @return
+     */
     public Observable<List<Bitmap>> load(final List<String> urls, final int width, final int height) {
         return Observable.defer(new Callable<ObservableSource<? extends List<Bitmap>>>() {
             @Override

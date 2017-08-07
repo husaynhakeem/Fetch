@@ -25,7 +25,7 @@ public class TextFetch extends Fetch {
 
     /**
      * @param url: URL from which data will be fetched
-     * @return Fetcher object with the attribute 'urls' set
+     * @return Fetch object with the attribute 'urls' set
      */
     public TextFetch from(String url) {
         this.urls = Collections.singletonList(url);
@@ -35,7 +35,7 @@ public class TextFetch extends Fetch {
 
     /**
      * @param itemsCount: Number of items to be fetched
-     * @return Fetcher object with the attribute 'itemCount' set
+     * @return Fetch object with the attribute 'itemCount' set
      */
     public TextFetch take(int itemsCount) {
         this.itemsCount = itemsCount;
@@ -44,15 +44,16 @@ public class TextFetch extends Fetch {
 
 
     /**
-     * @param cache
-     * @return Fetcher object with the attribute 'cache' set
+     * Fetching for text only supports loading data from one source,
+     * meaning one url. Which is why the first element from the urls list
+     * is used (it is the only element in the list anyway)
+     * <p>
+     * The method starts by checking the attributes of the TextFetch object,
+     * if any of the attributes isn't set correctly an Exception is thrown,
+     * and the rest of this method isn't executed.
+     *
+     * @return Single object with the result String
      */
-    public TextFetch cache(int cache) {
-        this.cache = cache;
-        return this;
-    }
-
-
     public Single<String> load() {
         checkAgent.checkAttributes();
         return TextFetchApi.instance().load(urls.get(0));

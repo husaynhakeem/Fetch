@@ -31,7 +31,7 @@ public class TextFetchApi {
         return Single.fromCallable(new Callable<String>() {
             @Override
             public String call() throws Exception {
-                return getJson(url);
+                return getStringResult(url);
             }
         })
                 .subscribeOn(Schedulers.io())
@@ -39,10 +39,10 @@ public class TextFetchApi {
     }
 
 
-    public String getJson(String url) {
+    public String getStringResult(String url) {
         try {
             URL urlForJson = new URL(url);
-            return getJson(urlForJson);
+            return getStringResult(urlForJson);
         } catch (MalformedURLException e) {
             e.printStackTrace();
             return null;
@@ -50,7 +50,7 @@ public class TextFetchApi {
     }
 
 
-    private String getJson(URL url) {
+    private String getStringResult(URL url) {
         HttpURLConnection httpURLConnection = null;
         try {
             httpURLConnection = (HttpURLConnection) url.openConnection();

@@ -11,6 +11,13 @@ import android.util.TypedValue;
 public class UiHelper {
 
 
+    /**
+     * Converter from DP to Pixels
+     *
+     * @param context
+     * @param dp
+     * @return
+     */
     public static int dpToPx(Context context, int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, displayMetrics);

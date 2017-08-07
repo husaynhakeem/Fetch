@@ -28,14 +28,14 @@ public class ImageFetch extends Fetch {
 
     public ImageFetch(Context context) {
         this.context = context;
-        this.resourceType = ResourceType.TEXT;
+        this.resourceType = ResourceType.IMAGE;
         checkAgent = new CheckAgent(this);
     }
 
 
     /**
      * @param url: URL from which data will be fetched
-     * @return Fetcher object with the attribute 'urls' set
+     * @return Fetch object with the attribute 'urls' set
      */
     public ImageFetch from(String url) {
         this.urls = Collections.singletonList(url);
@@ -43,6 +43,11 @@ public class ImageFetch extends Fetch {
     }
 
 
+    /**
+     * @param urls: List of URLs from which data will be fetched
+     *              each URL corresponding to an image
+     * @return Fetch object with the attribute 'urls' set
+     */
     public ImageFetch from(List<String> urls) {
         this.urls = urls;
         return this;
@@ -60,15 +65,13 @@ public class ImageFetch extends Fetch {
 
 
     /**
-     * @param cache
-     * @return Fetcher object with the attribute 'cache' set
+     * Allows to set the dimensions of the image to be loaded
+     * and returned.
+     *
+     * @param width  Width of the returned image
+     * @param height Height of the returned image
+     * @return
      */
-    public ImageFetch cache(int cache) {
-        this.cache = cache;
-        return this;
-    }
-
-
     public ImageFetch withDimens(int width, int height) {
         this.width = width;
         this.height = height;
@@ -76,6 +79,11 @@ public class ImageFetch extends Fetch {
     }
 
 
+    /**
+     * Used when there is only 1 URL to fetch an image from.
+     *
+     * @return Single Object with the result image as a Bitmap
+     */
     public Single<Bitmap> load() {
         checkAgent.checkAttributes();
         if (checkAgent.isFetchable() && width != DEFAULT_DIMENSION && height != DEFAULT_DIMENSION)
@@ -84,6 +92,11 @@ public class ImageFetch extends Fetch {
     }
 
 
+    /**
+     * Used when multiple (a list of) URLs are indicated to be fetched from.
+     *
+     * @return Observable Object with the result images as Bitmaps
+     */
     public Observable<List<Bitmap>> loadAll() {
         checkAgent.checkAttributes();
         if (checkAgent.isFetchable() && width != DEFAULT_DIMENSION && height != DEFAULT_DIMENSION)

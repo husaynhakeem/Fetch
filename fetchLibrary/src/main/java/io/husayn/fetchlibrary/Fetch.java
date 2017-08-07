@@ -15,16 +15,13 @@ import io.husayn.fetchlibrary.text.TextFetch;
 
 abstract public class Fetch {
 
+    // Default number of items that are taken from the loaded data
     public static final int DEFAULT_ITEMS_COUNT = 10;
-    public static final int DEFAULT_CACHE = 10;
-
 
     protected Context context;
     protected List<String> urls;
     protected int itemsCount = DEFAULT_ITEMS_COUNT;
-    protected int cache = DEFAULT_CACHE;
     protected ResourceType resourceType = ResourceType.NONE;
-
 
     protected CheckAgent checkAgent;
 
@@ -63,11 +60,6 @@ abstract public class Fetch {
 
     public int getItemsCount() {
         return itemsCount;
-    }
-
-
-    public int getCache() {
-        return cache;
     }
 
 

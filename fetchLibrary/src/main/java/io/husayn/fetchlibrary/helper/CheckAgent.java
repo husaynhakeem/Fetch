@@ -27,7 +27,6 @@ public class CheckAgent {
         checkUrls();
         checkResourceType();
         checkItemsCount();
-        checkCache();
 
         if (fetch instanceof ImageFetch) {
             checkWidth();
@@ -74,14 +73,6 @@ public class CheckAgent {
             throw new RuntimeException("Fetch items count attribute cannot be set to 0 (Zero)");
         if (fetch.getItemsCount() < 0)
             throw new RuntimeException("Fetch items count attribute cannot be negative");
-    }
-
-
-    private void checkCache() {
-        if (fetch.getCache() == 0)
-            throw new RuntimeException("Fetch cache attribute cannot be set to 0 (Zero)");
-        if (fetch.getCache() < 0)
-            throw new RuntimeException("Fetch cache attribute cannot be negative");
     }
 
 
