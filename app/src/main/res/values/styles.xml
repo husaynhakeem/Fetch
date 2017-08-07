@@ -24,4 +24,12 @@
         <item name="android:layout_marginLeft">8dp</item>
     </style>
 
+    <style name="TextViewUserKey" parent="TextViewDetailKey">
+        <item name="android:layout_marginLeft">16dp</item>
+    </style>
+
+    <style name="TextViewUserValue" parent="TextViewDetailValue">
+        <item name="android:layout_marginLeft">16dp</item>
+    </style>
+
 </resources>

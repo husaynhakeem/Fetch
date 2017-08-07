@@ -116,7 +116,7 @@ public class DetailPresenter implements DetailContract.Presenter {
 
     @Override
     public void setProfileImage() {
-        model.loadProfileImage(this, context, item.user.profile_image.small);
+        model.loadProfileImage(this, context, item.user.profile_image.medium);
     }
 
 
