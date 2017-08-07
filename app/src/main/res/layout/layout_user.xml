@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@+id/layout_image_details_2"
-    android:layout_margin="8dp"
+    android:layout_margin="@dimen/space_normal"
     app:cardCornerRadius="@dimen/cardview_default_radius"
     app:cardElevation="@dimen/cardview_default_elevation"
     app:cardUseCompatPadding="true">
@@ -13,14 +13,14 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="@dimen/space_big">
 
         <ImageView
             android:id="@+id/iv_profile_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="@dimen/profile_image_dimen"
+            android:layout_height="@dimen/profile_image_dimen"
+            android:layout_marginLeft="@dimen/space_normal"
+            android:layout_marginStart="@dimen/space_normal"
             android:contentDescription="@string/profile_image_content_description"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
         <TextView
             android:id="@+id/tv_posted_by"
             style="@style/TextViewUserValue"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/space_normal"
             android:text="@string/posted_by"
             app:layout_constraintLeft_toRightOf="@+id/iv_profile_image"
             app:layout_constraintTop_toTopOf="parent" />

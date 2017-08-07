@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@+id/iv_detail_image"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="@dimen/space_normal">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -15,40 +15,40 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="@dimen/space_normal"
+            android:layout_marginStart="@dimen/space_normal"
             android:text="@string/image_by" />
 
         <TextView
             android:id="@+id/tv_image_by_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="@dimen/space_normal"
+            android:layout_marginStart="@dimen/space_normal"
             android:textStyle="bold"
             tools:text="nicholaskampouris" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="@dimen/space_normal"
+            android:layout_marginStart="@dimen/space_normal"
             android:text="@string/image_by_on" />
 
         <TextView
             android:id="@+id/tv_image_by_onsplash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginLeft="@dimen/space_normal"
+            android:layout_marginStart="@dimen/space_normal"
             android:text="@string/image_by_onsplash"
             android:textStyle="bold" />
 
     </LinearLayout>
 
     <ImageView
-        android:layout_width="16dp"
-        android:layout_height="16dp"
+        android:layout_width="@dimen/space_big"
+        android:layout_height="@dimen/space_big"
         android:layout_gravity="end"
         android:contentDescription="@string/likes_content_description"
         android:src="@drawable/ic_likes" />
@@ -57,10 +57,10 @@
         android:id="@+id/tv_image_likes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginEnd="@dimen/space_normal"
+        android:layout_marginLeft="@dimen/space_small"
+        android:layout_marginRight="@dimen/space_normal"
+        android:layout_marginStart="@dimen/space_small"
         android:textSize="16sp"
         tools:text="12" />
 
