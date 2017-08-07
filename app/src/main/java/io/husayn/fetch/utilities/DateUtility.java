@@ -1,6 +1,5 @@
 package io.husayn.fetch.utilities;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -23,9 +22,8 @@ public class DateUtility {
 
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat(FORMATTED_DATE_FORMAT);
-            Date parsedDate = dateFormat.parse(unformattedDate.substring(FROM_INDEX, TO_INDEX));
-            Timestamp timestamp = new Timestamp(parsedDate.getTime());
-            return timestamp.toString();
+            Date date = dateFormat.parse(unformattedDate.substring(FROM_INDEX, TO_INDEX));
+            return dateFormat.format(date);
         } catch (Exception e) {
             return unformattedDate;
         }
