@@ -23,7 +23,9 @@
         </activity>
         <activity
             android:name=".detail.DetailActivity"
-            android:configChanges="orientation|screenSize" />
+            android:configChanges="orientation|screenSize"
+            android:label="@string/detail_activity_label"
+            android:parentActivityName=".listing.ListingActivity" />
     </application>
 
 </manifest>
