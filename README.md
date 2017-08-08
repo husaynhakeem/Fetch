@@ -33,4 +33,5 @@ This is an sample application based on the Master/Detail navigation flow.
 
 
 ### Demo
-
+![alt text](https://github.com/Husaynhakeem/Fetch/blob/master/app/src/main/assets/master.png)
+![alt text](https://github.com/Husaynhakeem/Fetch/blob/master/app/src/main/assets/detail.png)
